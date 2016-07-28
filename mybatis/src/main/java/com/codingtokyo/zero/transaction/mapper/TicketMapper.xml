@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.codingtokyo.zero.transaction.mapper.TicketMapper">
+
+	<resultMap id="cardMap" type="com.codingtokyo.zero.transaction.dto.Card">
+		<result	property="consumerId"	 	 column="consumerId" />
+		<result property="amount"	 	   	 column="amount" />
+	</resultMap>
+	
+	<resultMap id="ticketMap" type="com.codingtokyo.zero.transaction.dto.Ticket" >
+		<result	property="consumerId"	 	 column="consumerId" />
+		<result property="buyticket"	 	 column="buyticket" />
+	</resultMap>
+
+	<select id="getTicket" resultMap="cardMap">
+		SELECT * FROM student;
+	</select>
+	
+	<insert id="buyTicket">
+		INSERT INTO card (consumerId, amount) VALUES (#{consumerId}, #{amount});
+	</insert>
+
+	<insert id="ticketResult">
+		INSERT INTO ticket (consumerId, buyticket) VALUES (#{consumerId}, #{amount});
+	</insert>
+
+</mapper>
